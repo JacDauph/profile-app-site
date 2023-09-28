@@ -114,7 +114,7 @@
             var phone = document.querySelector("#" + profile + "Age");
             var color = document.querySelector("#" + profile + "Color");
 
-            get(child(dbref, ID.value))
+            get(child(dbref, ID))
             .then((snapshot)=>{
                 if(snapshot.exists()){
                     name.innerHTML = "Name: " + snapshot.val().name;
