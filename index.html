@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        img (object-fit: contain;)
         body {text-align: center;}
         #enterDetails {float: left; width: 50%;  background-color: darkslategray; color: floralwhite;}
         #findDetails {float: left; width: 50%; background-color: floralwhite; color: darkslategray;}
-        .profile {float: left; width: 25%; background-color: floralwhite; color: darkslategray;}
+        .profile {float: left; width: 50%; background-color: floralwhite; color: darkslategray;}
         input {width: 120px;}
     </style>
 </head>
@@ -53,7 +54,7 @@
     <div id="profile2" class="profile">
         <h2 id="profile2Name" type="text"></h2>
         <h5 id="ID2" type="text"></h5> <br><br>
-        <img src=""> <br><br>
+        <img id="profile2Image" src=""> <br><br>
         <h3 id="profile2Age" type="number"></h3>
         <h3 id="profile2Phone type="text""></h3>
         <h3 id="profile2Color type="text""></h3>
@@ -111,8 +112,8 @@
 
             var name = document.querySelector("#" + profile + "Name");
             var image = document.querySelector("#" + profile + "Image");
-            var age = document.querySelector("#" + profile + "Phone");
-            var phone = document.querySelector("#" + profile + "Age");
+            var age = document.querySelector("#" + profile + "Age");
+            var phone = document.querySelector("#" + profile + "Phone");
             var color = document.querySelector("#" + profile + "Color");
 
             get(child(dbref, ID))
