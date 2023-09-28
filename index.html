@@ -9,6 +9,7 @@
         body {text-align: center;}
         #enterDetails {float: left; width: 50%;  background-color: darkslategray; color: floralwhite;}
         #findDetails {float: left; width: 50%; background-color: floralwhite; color: darkslategray;}
+        .profile {float: left; width: 25%; background-color: floralwhite; color: darkslategray;}
         input {width: 120px;}
     </style>
 </head>
@@ -37,6 +38,24 @@
         <button id="find">FIND</button>
         <h3 id="findName" type="text"></h3>
         <h3 id="findAge" type="number"></h3> <br><br>
+    </div>
+
+    <div id="profile1" class="profile">
+        <h2 id="profile1Name" type="text"></h2>
+        <h5 id="ID1" type="text"></h5> <br><br>
+        <img id="profile1Image" src=""> <br><br>
+        <h3 id="profile1Age" type="number"></h3>
+        <h3 id="profile1Phone type="text""></h3>
+        <h3 id="profile1Color type="text""></h3>
+    </div>
+
+    <div id="profile2" class="profile">
+        <h2 id="profile2Name" type="text"></h2>
+        <h5 id="ID2" type="text"></h5> <br><br>
+        <img src=""> <br><br>
+        <h3 id="profile2Age" type="number"></h3>
+        <h3 id="profile2Phone type="text""></h3>
+        <h3 id="profile2Color type="text""></h3>
     </div>
     
 
@@ -81,7 +100,42 @@
 
         const db = getDatabase();
 
-        var enterID = document.querySelector("#enterID");
+        var ID1 = "WqtH4aoPirh5pCTrHGb9gKlR1lK2";
+        var ID2 = "cF5fdhCTvTfi3AfCfnI93CODT2p1";
+
+        
+
+        function GetProfile(ID,profile) {
+            const dbref = ref(db);
+
+            var name = document.querySelector("#" + profile + "Name");
+            var image = document.querySelector("#" + profile + "Image");
+            var age = document.querySelector("#" + profile + "Phone");
+            var phone = document.querySelector("#" + profile + "Age");
+            var color = document.querySelector("#" + profile + "Color");
+
+            get(child(dbref, ID.value))
+            .then((snapshot)=>{
+                if(snapshot.exists()){
+                    name.innerHTML = "Name: " + snapshot.val().name;
+                    image.src = snapshot.val().image;
+                    age.innerHTML = "Age: " + snapshot.val().age;
+                    phone.innerHTML = "Phone Number: " + snapshot.val().phone;
+                    color.innerHTML = "Color: " + snapshot.val().color;
+                } else {
+                    alert("No data found");
+                }
+            })
+            .catch((error)=>{
+                alert(error)
+            })
+            
+        }
+
+        GetProfile(ID1,"profile1");
+        GetProfile(ID2,"profile2");
+
+        /*var enterID = document.querySelector("#enterID");
         var enterName = document.querySelector("#enterName");
         var enterAge = document.querySelector("#enterAge");
         var findID = document.querySelector("#findID");
@@ -153,7 +207,7 @@
         updateBtn.addEventListener('click', UpdateData);
         removeBtn.addEventListener('click', RemoveData);
         findBtn.addEventListener('click', FindData);
-
+        */
       </script>
 </body>
 </html>
