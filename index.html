@@ -44,7 +44,7 @@
 -->
     <div id="profile1" class="profile">
         <h2 id="profile1Name" type="text"></h2>
-        <h5 id="ID1" type="text"></h5> <br><br>
+        <h5 id="profile1ID" type="text"></h5> <br><br>
         <img id="profile1Image" src=""> <br><br>
         <h3 id="profile1Age" type="number"></h3>
         <h3 id="profile1Phone" type="text"></h3>
@@ -53,7 +53,7 @@
 
     <div id="profile2" class="profile">
         <h2 id="profile2Name" type="text"></h2>
-        <h5 id="ID2" type="text"></h5> <br><br>
+        <h5 id="profile2ID" type="text"></h5> <br><br>
         <img id="profile2Image" src=""> <br><br>
         <h3 id="profile2Age" type="number"></h3>
         <h3 id="profile2Phone" type="text"></h3>
@@ -116,10 +116,13 @@
             var phone = document.querySelector("#" + profile + "Phone");
             var color = document.querySelector("#" + profile + "Color");
 
+            var id = document.querySelector("#" + profile + "ID");
+            id.innerHTML = ID;
+
             get(child(dbref, ID))
             .then((snapshot)=>{
                 if(snapshot.exists()){
-                    name.innerHTML = "Name: " + snapshot.val().name;
+                    name.innerHTML = snapshot.val().name;
                     image.src = snapshot.val().image;
                     age.innerHTML = "Age: " + snapshot.val().age;
                     phone.innerHTML = "Phone Number: " + snapshot.val().phone;
